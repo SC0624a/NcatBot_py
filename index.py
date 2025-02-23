@@ -6,7 +6,7 @@ import json
 import fn
 
 
-ws_url = 'ws://127.0.0.1:3001'
+ws_url = 'ws://127.0.0.1:3001'   #自行换成你的连接
 
 async def main():
     try:
