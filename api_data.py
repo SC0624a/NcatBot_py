@@ -2,7 +2,7 @@ import json
 import aiohttp
 import asyncio
 
-api_url = 'http://127.0.0.1:3000'
+api_url = 'http://127.0.0.1:3000'   #自行换成你的链接
 
 class Bot_api:
     def __init__(self):
