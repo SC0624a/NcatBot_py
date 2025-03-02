@@ -10,9 +10,34 @@ def register_command(func):
 
 class ctr:
     def __init__(self,raw):
-        self.group_id = raw['group_id']
+        self.self_id = raw['self_id']
         self.user_id = raw['user_id']
-        self.text = raw['message'][0]['data']['text']
+        self.time = raw['time']
+        self.message_id = raw['message_id']
+        self.message_seq = raw['message_seq']
+        self.real_id = raw['real_id']
+        self.message_type = raw['message_type']
+        if self.message_type != 'group':
+            self.target_id = raw['target_id']
+        else:
+            self.target_id = None
+        self.sender = raw['sender']
+        self.sender_user_id = self.sender['user_id']
+        self.sender_nickname = self.sender['nickname']
+        self.sender_card = self.sender['card']
+        if self.message_type == 'group':
+            self.sender_role = self.sender['role']
+            self.group_id = raw['group_id']
+        else:
+            self.sender_role = None
+            self.group_id = None
+        self.raw_message = raw['raw_message']
+        self.font = raw['font']
+        self.sub_type = raw['sub_type']
+        self.message = ['message']
+        self.message_forma = ['message_forma']
+        self.post_type = raw['post_type']
+
 
 async def messages(raw_message):
     """消息处理入口"""
